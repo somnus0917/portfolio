@@ -3,6 +3,8 @@
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
 import { projectTags, projects, type ProjectTag } from "@/data/projects";
 import { Badge } from "@/components/ui/badge";
@@ -71,29 +73,39 @@ export function Projects() {
               transition={{ duration: 0.28 }}
             >
               <Card className="h-full overflow-hidden transition-colors hover:border-accent/80">
-                <div
-                  className={cn(
-                    "aspect-[16/10] border-b border-border bg-gradient-to-br",
-                    project.imageTone,
-                  )}
-                >
-                  <div className="relative h-full overflow-hidden">
-                    <Image
-                      src={project.image}
-                      alt={`${project.title} 项目封面`}
-                      fill
-                      sizes="(min-width: 1024px) 50vw, 100vw"
-                      className="object-cover object-center"
-                    />
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent p-4">
-                      <span className="rounded-md border border-white/15 bg-black/25 px-3 py-1 font-mono text-xs text-white backdrop-blur">
-                        {project.subtitle}
-                      </span>
+                <Link href={`/projects/${project.slug}`} className="block focus-visible:outline-none">
+                  <div
+                    className={cn(
+                      "aspect-[16/10] border-b border-border bg-gradient-to-br",
+                      project.imageTone,
+                    )}
+                  >
+                    <div className="relative h-full overflow-hidden">
+                      <Image
+                        src={project.image}
+                        alt={`${project.title} 项目封面`}
+                        fill
+                        sizes="(min-width: 1024px) 50vw, 100vw"
+                        className="object-cover object-center transition-transform duration-500 hover:scale-[1.03]"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent p-4">
+                        <span className="rounded-md border border-white/15 bg-black/25 px-3 py-1 font-mono text-xs text-white backdrop-blur">
+                          {project.subtitle}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Link>
                 <CardHeader>
-                  <CardTitle>{project.title}</CardTitle>
+                  <CardTitle>
+                    <Link
+                      href={`/projects/${project.slug}`}
+                      className="inline-flex items-center gap-2 hover:text-accent"
+                    >
+                      {project.title}
+                      <ArrowUpRight className="h-4 w-4" />
+                    </Link>
+                  </CardTitle>
                   <p className="font-mono text-xs text-accent">{project.subtitle}</p>
                   <CardDescription className="leading-6">{project.description}</CardDescription>
                 </CardHeader>
@@ -118,9 +130,12 @@ export function Projects() {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <p className="text-xs text-muted-foreground">
-                    项目资料整理自个人介绍 PPT，后续可补充论文、专利或比赛证明链接。
-                  </p>
+                  <Button asChild variant="outline" size="sm">
+                    <Link href={`/projects/${project.slug}`}>
+                      查看详细介绍
+                      <ArrowUpRight className="h-4 w-4" />
+                    </Link>
+                  </Button>
                 </CardFooter>
               </Card>
             </motion.div>

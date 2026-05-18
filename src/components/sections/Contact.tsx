@@ -55,10 +55,10 @@ export function Contact() {
             后续可接入真实邮件服务。
           </p>
           <a
-            href="mailto:hello@example.com"
+            href="mailto:somnus0917chen@hotmail.com"
             className="mt-6 inline-flex font-mono text-sm text-accent underline-offset-4 hover:underline"
           >
-            hello@example.com
+            somnus0917chen@hotmail.com
           </a>
         </div>
 
@@ -74,7 +74,9 @@ export function Contact() {
               </label>
               <Input id="name" placeholder="请输入姓名" {...register("name")} />
               {errors.name ? (
-                <p className="text-sm text-destructive">{errors.name.message}</p>
+                <p className="text-sm text-destructive">
+                  {errors.name.message}
+                </p>
               ) : null}
             </div>
 
@@ -82,9 +84,16 @@ export function Contact() {
               <label htmlFor="email" className="text-sm font-medium">
                 邮箱
               </label>
-              <Input id="email" type="email" placeholder="your@email.com" {...register("email")} />
+              <Input
+                id="email"
+                type="email"
+                placeholder="your@email.com"
+                {...register("email")}
+              />
               {errors.email ? (
-                <p className="text-sm text-destructive">{errors.email.message}</p>
+                <p className="text-sm text-destructive">
+                  {errors.email.message}
+                </p>
               ) : null}
             </div>
           </div>
@@ -93,15 +102,23 @@ export function Contact() {
             <label htmlFor="message" className="text-sm font-medium">
               留言
             </label>
-            <Textarea id="message" placeholder="请简单介绍你想交流的内容..." {...register("message")} />
+            <Textarea
+              id="message"
+              placeholder="请简单介绍你想交流的内容..."
+              {...register("message")}
+            />
             {errors.message ? (
-              <p className="text-sm text-destructive">{errors.message.message}</p>
+              <p className="text-sm text-destructive">
+                {errors.message.message}
+              </p>
             ) : null}
           </div>
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm text-muted-foreground" aria-live="polite">
-              {isSubmitSuccessful ? "留言已在本地记录，后续可接入邮件服务。" : ""}
+              {isSubmitSuccessful
+                ? "留言已在本地记录，后续可接入邮件服务。"
+                : ""}
             </p>
             <Button type="submit" disabled={isSubmitting}>
               <Send className="h-4 w-4" />

@@ -38,6 +38,8 @@ jobs:
 
       - name: Build
         run: bun run build
+        env:
+          NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ vars.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY }}
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

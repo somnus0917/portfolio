@@ -20,7 +20,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          陈磊 / 西南交通大学 / 智能制造工程
+          陈磊 / 中国科学院大学计算技术研究所 / 人工智能
         </motion.p>
 
         <h1 className="text-balance text-5xl font-semibold tracking-normal text-foreground sm:text-6xl lg:text-7xl">

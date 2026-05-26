@@ -1,9 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { GraduationCap } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { SectionReveal } from "@/components/ui/section-reveal";
+
+const educations = [
+  {
+    stage: "研究生",
+    school: "中国科学院大学",
+    institute: "计算技术研究所",
+    major: "人工智能",
+  },
+  {
+    stage: "本科",
+    school: "西南交通大学",
+    institute: "智慧城市与交通学院",
+    major: "智能制造工程",
+  },
+];
 
 export function About() {
   return (
@@ -18,7 +34,9 @@ export function About() {
           </h2>
           <div className="mt-6 space-y-4 text-base leading-8 text-muted-foreground">
             <p>
-              我是西南交通大学智能制造工程专业本科生，关注复杂系统中的感知、建模与验证。
+              我本科阶段就读于西南交通大学智慧城市与交通学院智能制造工程专业，
+              研究生阶段进入中国科学院大学计算技术研究所人工智能方向，
+              关注复杂系统中的感知、建模与验证。
               在国家级大学生创新创业项目中，我负责卡口摄像头数据处理与交通流量模型构建；
               在 Robocon 机器人篮球竞技赛中，我参与视觉定位方案设计和机器人联合调试。
             </p>
@@ -26,6 +44,32 @@ export function About() {
               我希望把算法问题拆成清晰的工程链路：从数据采集、模型构建、实验验证，
               到现场调试和成果沉淀。这个作品集记录了我在交通感知和机器人视觉方向的代表经历。
             </p>
+          </div>
+          <div className="mt-8">
+            <p className="mb-4 font-mono text-sm text-accent">教育经历</p>
+            <div className="space-y-3">
+              {educations.map((education) => (
+                <div
+                  key={education.stage}
+                  className="flex gap-4 rounded-lg border border-border bg-card p-4 sm:items-center"
+                >
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-accent/10 text-accent">
+                    <GraduationCap className="h-5 w-5" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <p className="font-medium text-foreground">{education.school}</p>
+                      <Badge variant="outline" className="font-mono text-accent">
+                        {education.stage}
+                      </Badge>
+                    </div>
+                    <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                      {education.institute} / {education.major}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
             {[
@@ -50,7 +94,7 @@ export function About() {
           <div className="absolute inset-0 bg-[linear-gradient(135deg,color-mix(in_oklch,var(--accent)_22%,transparent),transparent_48%),radial-gradient(circle_at_72%_18%,rgba(255,255,255,0.16),transparent_18rem)]" />
           <div className="absolute inset-x-8 bottom-8 rounded-lg border border-border/80 bg-background/72 p-5 backdrop-blur">
             <p className="font-mono text-xs uppercase tracking-normal text-accent">
-              西南交通大学 / 智能制造工程
+              智能制造工程 / 人工智能
             </p>
             <p className="mt-2 text-sm text-muted-foreground">
               科研项目负责人、机器人队视觉组成员、暑期短期支教领队、跑步协会长跑队副队长。
